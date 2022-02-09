@@ -2,6 +2,7 @@ package Service;
 
 import Entity.Line;
 import Menu.Menu;
+import Util.CollectionUtil;
 
 import java.util.ArrayList;
 import java.util.InputMismatchException;
@@ -45,7 +46,7 @@ public class LineService {
 
     public void initializeLineData() {
         List<Line> lineList = Menu.lineDBUtil.getAll();
-        if (lineList.size() > 0) {
+        if (!CollectionUtil.isEmpty(lineList)) {
             Line.AUTO_ID = lineList.get(lineList.size() - 1).getId() + 1;
             Menu.lineList = lineList;
         } else {

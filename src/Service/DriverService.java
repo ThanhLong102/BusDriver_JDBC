@@ -2,6 +2,7 @@ package Service;
 
 import Entity.Driver;
 import Menu.Menu;
+import Util.CollectionUtil;
 
 import java.util.ArrayList;
 import java.util.InputMismatchException;
@@ -46,10 +47,9 @@ public class DriverService {
 
     public void initializeDriverData() {
         List<Driver> driverList = Menu.driverDBUtil.getAll();
-        if (driverList.size() > 0) {
+        if (!CollectionUtil.isEmpty(driverList)) {
             Driver.AUTO_ID = driverList.get(driverList.size() - 1).getId() + 1;
             Menu.driverList = driverList;
-            System.out.println(Menu.driverList.size());
         } else {
             Menu.driverList = new ArrayList<>();
         }

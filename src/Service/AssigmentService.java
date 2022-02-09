@@ -6,6 +6,7 @@ import Entity.Line;
 import Entity.Point.Assignment;
 import Entity.Point.AssignmentTable;
 import Menu.Menu;
+import Util.CollectionUtil;
 import Util.DataUtil;
 
 import java.util.ArrayList;
@@ -16,7 +17,7 @@ import java.util.Scanner;
 public class AssigmentService {
 
     private static boolean isNullOfEmptyDriverOrLine() {
-        return Menu.driverList.size() == 0 || Menu.lineList.size() == 0;
+        return CollectionUtil.isEmpty(Menu.driverList) || CollectionUtil.isEmpty(Menu.lineList);
     }
 
     public void showAssignmentTable() {
@@ -135,10 +136,10 @@ public class AssigmentService {
         do {
             try {
                 lineNumber = new Scanner(System.in).nextInt();
-                if (lineNumber > 0) {
+                if (lineNumber > 0 && lineNumber <= Menu.lineList.size()) {
                     break;
                 }
-                System.out.print("Số lượng tuyến là số nguyên, vui lòng nhập lại: ");
+                System.out.print("Số lượng tuyến là số nguyên và không vượt qua số tuyến có sẵn, vui lòng nhập lại: ");
             } catch (InputMismatchException ex) {
                 System.out.print("Số lượng tuyến là một số nguyên, vui lòng nhập lại: ");
             }
@@ -214,7 +215,7 @@ public class AssigmentService {
 
     public void initializeAssignmentTableData() {
         Menu.assignmentTableList = Menu.assignmentDBUtil.getAll();
-        if (Menu.assignmentTableList.isEmpty()) {
+        if (CollectionUtil.isEmpty(Menu.assignmentTableList)) {
             Menu.assignmentTableList = new ArrayList<>();
         }
     }
