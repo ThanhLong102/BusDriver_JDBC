@@ -1,15 +1,15 @@
-package Util.File;
+package Dao;
+
+import Entity.Driver;
 
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
-import Entity.Driver;
-
 public class DriverDBUtil implements DataReadable<Driver>, DataWritable<Driver> {
 
     @Override
-    public List<Driver> readDataFromDB() {
+    public List<Driver> getAll() {
         List<Driver> driverList = new ArrayList<>();
         try {
             Connection connection = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:xe", "root", "anhhieu123");
@@ -36,7 +36,7 @@ public class DriverDBUtil implements DataReadable<Driver>, DataWritable<Driver> 
     }
 
     @Override
-    public void writeDataToDB(Driver driver) {
+    public void insert(Driver driver) {
         try {
             Connection connection = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:xe", "root", "anhhieu123");
 

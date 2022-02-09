@@ -63,7 +63,7 @@ public class AssigmentService {
 
                     //Ghi vao DB
                     AssignmentDto assignmentDto = new AssignmentDto(driver, line, turnNumber);
-                    Menu.assignmentDBUtil.writeDataToDB(assignmentDto);
+                    Menu.assignmentDBUtil.insert(assignmentDto);
 
                 }
             }
@@ -106,7 +106,7 @@ public class AssigmentService {
 
                 //Ghi vao DB
                 AssignmentDto assignmentDto = new AssignmentDto(driver, line, turnNumber);
-                Menu.assignmentDBUtil.writeDataToDB(assignmentDto);
+                Menu.assignmentDBUtil.insert(assignmentDto);
             }
         }
     }
@@ -213,7 +213,7 @@ public class AssigmentService {
     }
 
     public void initializeAssignmentTableData() {
-        Menu.assignmentTableList = Menu.assignmentDBUtil.readDataFromDB();
+        Menu.assignmentTableList = Menu.assignmentDBUtil.getAll();
         if (Menu.assignmentTableList.isEmpty()) {
             Menu.assignmentTableList = new ArrayList<>();
         }

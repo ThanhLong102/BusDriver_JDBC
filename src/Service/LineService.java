@@ -31,7 +31,7 @@ public class LineService {
             Line line = new Line();
             line.inputInfo();
             Menu.lineList.add(line);
-            Menu.lineDBUtil.writeDataToDB(line);
+            Menu.lineDBUtil.insert(line);
         }
     }
 
@@ -44,7 +44,7 @@ public class LineService {
     }
 
     public void initializeLineData() {
-        List<Line> lineList = Menu.lineDBUtil.readDataFromDB();
+        List<Line> lineList = Menu.lineDBUtil.getAll();
         if (lineList.size() > 0) {
             Line.AUTO_ID = lineList.get(lineList.size() - 1).getId() + 1;
             Menu.lineList = lineList;

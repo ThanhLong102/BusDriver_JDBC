@@ -1,4 +1,4 @@
-package Util.File;
+package Dao;
 
 import Entity.Line;
 
@@ -9,7 +9,7 @@ import java.util.List;
 public class LineDBUtil implements DataReadable<Line>, DataWritable<Line> {
 
     @Override
-    public List<Line> readDataFromDB() {
+    public List<Line> getAll() {
         List<Line> lineList = new ArrayList<>();
         try {
             Connection connection = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:xe", "root", "anhhieu123");
@@ -34,7 +34,7 @@ public class LineDBUtil implements DataReadable<Line>, DataWritable<Line> {
     }
 
     @Override
-    public void writeDataToDB(Line line) {
+    public void insert(Line line) {
         try {
             Connection connection = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:xe", "root", "anhhieu123");
 

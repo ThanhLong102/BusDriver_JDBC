@@ -32,7 +32,7 @@ public class DriverService {
             Driver driver = new Driver();
             driver.inputInfo();
             Menu.driverList.add(driver);
-            Menu.driverDBUtil.writeDataToDB(driver);
+            Menu.driverDBUtil.insert(driver);
         }
     }
 
@@ -45,7 +45,7 @@ public class DriverService {
     }
 
     public void initializeDriverData() {
-        List<Driver> driverList = Menu.driverDBUtil.readDataFromDB();
+        List<Driver> driverList = Menu.driverDBUtil.getAll();
         if (driverList.size() > 0) {
             Driver.AUTO_ID = driverList.get(driverList.size() - 1).getId() + 1;
             Menu.driverList = driverList;

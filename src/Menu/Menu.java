@@ -1,14 +1,15 @@
 package Menu;
 
+import Dao.AssignmentDBUtil;
+import Dao.DriverDBUtil;
+import Dao.LineDBUtil;
 import Entity.Driver;
 import Entity.Line;
 import Entity.Point.AssignmentTable;
 import Service.AssigmentService;
 import Service.DriverService;
 import Service.LineService;
-import Util.File.AssignmentDBUtil;
-import Util.File.DriverDBUtil;
-import Util.File.LineDBUtil;
+
 
 import java.util.InputMismatchException;
 import java.util.List;
@@ -70,7 +71,6 @@ public class Menu {
             }
         } while (true);
     }
-
 
     public static int functionChoice() {
         System.out.println("---------QUẢN LÝ Bảng điểm sinh viên---------");

@@ -1,4 +1,4 @@
-package Util.File;
+package Dao;
 
 import Dto.AssignmentDto;
 import Entity.Point.Assignment;
@@ -11,7 +11,7 @@ import java.util.List;
 
 public class AssignmentDBUtil implements DataWritable<AssignmentDto>, DataReadable<AssignmentTable>, DataUpdateable<AssignmentDto> {
     @Override
-    public List<AssignmentTable> readDataFromDB() {
+    public List<AssignmentTable> getAll() {
         List<AssignmentTable> assignmentTableList = new ArrayList<>();
         try {
             Connection connection = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:xe", "root", "anhhieu123");
@@ -51,7 +51,7 @@ public class AssignmentDBUtil implements DataWritable<AssignmentDto>, DataReadab
     }
 
     @Override
-    public void writeDataToDB(AssignmentDto assignmentDto) {
+    public void insert(AssignmentDto assignmentDto) {
         try {
             Connection connection = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:xe", "root", "anhhieu123");
 

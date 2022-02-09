@@ -1,7 +1,7 @@
-package Util.File;
+package Dao;
 
 import java.util.List;
 
 public interface DataReadable <T>{
-    List<T> readDataFromDB();
+    List<T> getAll();
 }
